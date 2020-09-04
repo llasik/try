@@ -3,7 +3,7 @@ const loadform = async () => {
     document.body
       .appendChild(document.createElement('main'))
         .innerHTML = html
-  const [login, password, avatar, submit, picture] = ['login', 'password', 'avatar'].map((id) => document.getElementById(id))
+  const [login, password, avatar, submit, picture] = ['login', 'password', 'avatar', 'submit', 'picture' ].map((id) => document.getElementById(id))
   login.onchange = function(event) {
   	fetch(`http://localhost:3000/users?login=${event.target.value}`) 
   	  .then((response) => response.json())
