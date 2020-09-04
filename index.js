@@ -28,7 +28,7 @@ const loadform = async () => {
   		},
   		body: JSON.stringify({
   			login: login.value,
-  			password: password.value
+  			password: password.value,
   			avatar: picture.src
   		})
   	}).then((response) => console.log(response.status))
