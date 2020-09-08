@@ -1,60 +1,23 @@
-const loadform = async () => {
-  const html = await (await fetch('https://llasik.github.io/try/resources/form.html')).text()
-  document.body
-    .appendChild(document.createElement('main'))
-      .innerHTML = html
-  const [login, password, avatar, submit, picture] = ['login', 'password', 'avatar', 'submit', 'picture']
+const user = localStorage.getItem('user')
+
+const pass = localStorage.getItem('password')
+
+const [messageElem, signInButton, signUpButton ] = ['message', 'signIn', 'signUp']
   .map((id) => document.getElementById(id))
-  
-  login.onchange = function(event) {
-    fetch(`http://localhost:3000/users?login=${event.target.value}`)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.length === 0) {
-          event.target.style.color = 'green'
-          password.disabled = false
-          localStorage.setItem('user', event.target.value)
-        } else {
-          event.target.style.color = 'red'
-          password.disabled = true
+
+fetch(`http://localhost:3000/users?login=${user}`)
+  .then((response) => response.json())
+  .then((response) => {
+    if (response[0].password === pass) {
+          messageElem.innerHTML = '<h1>Hello</h1>'
+    } else {
+          messageElem.innerHTML  = '<h1>Go to registration form</h1>'
+          signInButton.disabled = false
+          signUpButton.disabled = false
         }
       })
-  }
-  
-  password.onchange = function(event) {
-    if (event.target.value.length >= 8 && event.target.value.match (/[\dA-Z]+/g)) {
-      avatar.disabled = false
-      submit.disabled = false
-    var hash = Sha256.hash(event.target.value)
-    localStorage.setItem('pass', hash)
-    }
-  }
-  
-  submit.onclick = function(event) {
-    fetch('http://localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-        body: JSON.stringify({
-          login: login.value,
-          password: localStorage.getItem('pass'),
-          avatar: picture.src
-        })
-    }).then((response) => console.log(response.status))
-  }
-  
-  avatar.onchange = function(event) {
-    if (event.target.files[0].type.indexOf('image') !== 0) {
-      console.warn('Invalid file type')
-    } else {
-      const reader = new FileReader
-      reader.onload = function(event) {
-        picture.src = reader.result
-      }
-      reader.readAsDataURL(event.target.files[0])
-    }
-  }
-}
 
-loadform()
+  signUpButton.onclick = function(event) {
+    const script = document.body.appendChild(document.createElement('script'))
+    script.src = './signUp.js'
+  }

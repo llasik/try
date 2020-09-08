@@ -1,15 +1,6 @@
 {
   "users": [
-    {
-      "login": "john",
-      "password": "qwerty",
-      "id": 1
-    },
-    {
-      "login": "john",
-      "password": "qwerty",
-      "id": 2
-    }
+    
   ],
   "posts": [
     {
