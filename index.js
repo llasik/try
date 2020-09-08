@@ -1,5 +1,5 @@
 const loadform = async () => {
-  const html = await (await fetch('https://github.com/llasik/try.git/resources/form.html')).text()
+  const html = await (await fetch('https://llasik.github.io/try/resources/form.html')).text()
   document.body
     .appendChild(document.createElement('main'))
       .innerHTML = html

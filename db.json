@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "login": "john",
+      "password": "qwerty",
+      "id": 1
+    },
+    {
+      "login": "john",
+      "password": "qwerty",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "topic": "fetch",
+      "content": "enjoy fetch",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "profile": {
+    "id": 1,
+    "name": "Joe",
+    "age": 25,
+    "hobby": "reading"
+  }
+}
