@@ -22,7 +22,7 @@ const loadform = async () => {
   }
   
   password.onchange = function(event) {
-    if (event.target.value.length >= 8 && event.target.value.match (/[\dA-Z]+)/g)) {
+    if (event.target.value.length >= 8 && event.target.value.match (/[\dA-Z]+/g)) {
       avatar.disabled = false
       submit.disabled = false
     var hash = Sha256.hash(event.target.value)
